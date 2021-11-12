@@ -8,7 +8,11 @@ and after that for an hour.
 A world map visualizing the location of ISS. Hover mouse cursor over data points to display relevant information. 
 <br><br>
 ![alt text](https://github.com/Binana19/ISS-Locator/blob/main/Output_Imgs/Screenshot%20(233).png)
-![alt text](Screenshot 2021-11-12 231356.png)
+
+<br><br>
+Text information of ISS location in terminal. 
+<br><br>
+![alt text](https://github.com/Binana19/ISS-Locator/blob/main/Output_Imgs/Screenshot%202021-11-12%20231356.png)
 
 ## APIs
 •	["Where the ISS at?" REST API Documentation"](https://wheretheiss.at/w/developer)
