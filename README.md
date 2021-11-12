@@ -4,6 +4,9 @@ This is a simple command line application that allows users to enter a past date
 receives the location coordinates the International Space Station (ISS) was over at that moment, as well as its location every ten minutes before
 and after that for an hour.
 
+## Output
+
+
 ## APIs
 •	["Where the ISS at?" REST API Documentation"](https://wheretheiss.at/w/developer)
 
