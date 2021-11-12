@@ -5,8 +5,10 @@ receives the location coordinates the International Space Station (ISS) was over
 and after that for an hour.
 
 ## Output
-![](Screenshot (233))
-![](Screenshot 2021-11-12 231356)
+A world map visualizing the location of ISS. Hover mouse cursor over data points to display relevant information. 
+<br><br>
+![](Screenshot (233).png)
+![](Screenshot 2021-11-12 231356.png)
 
 ## APIs
 •	["Where the ISS at?" REST API Documentation"](https://wheretheiss.at/w/developer)
