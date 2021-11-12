@@ -19,6 +19,7 @@ from datetime import datetime,timedelta
 from itertools import chain
 from mpl_toolkits.basemap import Basemap
 
+pt_with_text = []
 
 def draw_map(m, scale=0.2):
     """
@@ -85,6 +86,7 @@ def get_iss_location(timestamp):
     return location
 
 
+
 def display_iss_location(locations):
     """
     Display location of ISS.
@@ -92,7 +94,7 @@ def display_iss_location(locations):
     Arguments:      locations = a list of coordinates  
     """
 
-    print("\n{} ISS Location {}".format('='*33,'='*33))
+    # print("\n{} ISS Location {}".format('='*33,'='*33))
 
     lon = []
     lat = []
@@ -103,7 +105,7 @@ def display_iss_location(locations):
         lon.append(coord[1])
         lat.append(coord[0])
 
-        print("{}. {} - Coordinates: {}".format(i+1,dt,coord))
+        # print("{}. {} - Coordinates: {}".format(i+1,dt,coord))
 
     # Visualize ISS location on Cylindrical Projection 
     fig = plt.figure(figsize=(8, 6), edgecolor='w')
@@ -116,15 +118,36 @@ def display_iss_location(locations):
     xpt,ypt = m(lon,lat)
     # convert back to lat/lon
     lonpt, latpt = m(xpt,ypt,inverse=True)
-    m.plot(xpt,ypt,'bo')  # plot a blue dot 
 
     # label data points
     for i in range(len(lonpt)):
-        dt = datetime.fromtimestamp(locations[i]['timestamp']).strftime('%d/%m/%Y %H:%M')
-        plt.text(xpt[i]-2,ypt[i]+2,'%s\n(%3.1fN,%5.1fW)' % (dt,latpt[i],lonpt[i]),fontsize=7)
+        point, = m.plot(xpt[i],ypt[i],'bo')  # plot blue dot
+        dt = datetime.fromtimestamp(locations[i]['timestamp']).strftime('%d/%m/%Y %I:%M%p')
+        text = plt.text(xpt[i]-2,ypt[i]+3,'%s\n(%3.1fN,%5.1fW)' % (dt,latpt[i],lonpt[i]),fontsize=7)
+    
+        # by default, disable the annotation visibility
+        text.set_visible(False)
+        pt_with_text.append([point, text])
 
+    fig.canvas.mpl_connect("motion_notify_event", hover)
     plt.show()
 
+
+def hover(event):
+    """
+    Capture mouse event (hovering on data points) and display popup text.
+    Code referenced from https://matplotlib.org/stable/users/event_handling.html
+    """
+    visibility_changed = False
+    for point, text in pt_with_text:
+        should_be_visible = (point.contains(event)[0] == True)
+
+        if should_be_visible != text.get_visible():
+            visibility_changed = True
+            text.set_visible(should_be_visible)
+
+    if visibility_changed:        
+        plt.draw()
             
 
 if __name__ == "__main__":
