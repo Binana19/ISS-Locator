@@ -94,7 +94,7 @@ def display_iss_location(locations):
     Arguments:      locations = a list of coordinates  
     """
 
-    # print("\n{} ISS Location {}".format('='*33,'='*33))
+    print("\n{} ISS Location {}".format('='*33,'='*33))
 
     lon = []
     lat = []
@@ -105,7 +105,7 @@ def display_iss_location(locations):
         lon.append(coord[1])
         lat.append(coord[0])
 
-        # print("{}. {} - Coordinates: {}".format(i+1,dt,coord))
+        print("{}. {} - Coordinates: {}".format(i+1,dt,coord))
 
     # Visualize ISS location on Cylindrical Projection 
     fig = plt.figure(figsize=(8, 6), edgecolor='w')
@@ -123,13 +123,19 @@ def display_iss_location(locations):
     for i in range(len(lonpt)):
         point, = m.plot(xpt[i],ypt[i],'bo')  # plot blue dot
         dt = datetime.fromtimestamp(locations[i]['timestamp']).strftime('%d/%m/%Y %I:%M%p')
-        text = plt.text(xpt[i]-2,ypt[i]+3,'%s\n(%3.1fN,%5.1fW)' % (dt,latpt[i],lonpt[i]),fontsize=7)
+        text = plt.text( xpt[i]-2, ypt[i]+3, 
+                         'Datetime: %s\n(%3.1fN,%5.1fW)' % (dt,latpt[i],lonpt[i]),
+                         horizontalalignment='center',
+                         verticalalignment='center',
+                         fontsize=7, 
+                         bbox=dict(facecolor='lemonchiffon', edgecolor='black', boxstyle='round,pad=1') )
     
-        # by default, disable the annotation visibility
+        # disable the annotation visibility by default
         text.set_visible(False)
         pt_with_text.append([point, text])
 
     fig.canvas.mpl_connect("motion_notify_event", hover)
+    plt.title("ISS Location",{'family':'serif','size':20},loc = 'left')
     plt.show()
 
 
@@ -152,26 +158,23 @@ def hover(event):
 
 if __name__ == "__main__":
     
-    # while True:
-    #     date_example = input('\nEnter date and time (DD/MM/YYYY HH:MM - 24HR format): ') # e.g "23/07/2021 06:51"
-    #     valid = True
-    #     try:
-    #         datetime.strptime(date_example, "%d/%m/%Y %H:%M")
+    while True:
+        date_example = input('\nEnter date and time (DD/MM/YYYY HH:MM - 24HR format): ') # e.g "23/07/2021 06:51"
+        valid = True
+        try:
+            datetime.strptime(date_example, "%d/%m/%Y %H:%M")
 
-    #     except ValueError:
-    #         valid = False
+        except ValueError:
+            valid = False
 
-    #     if valid:
-    #         dateTimes = get_unix_time(date_example, minutes=10, duration=60) # duration in minutes 
-    #         req = get_iss_location(dateTimes)
-    #         display_iss_location(req)
-    #         sys.exit()
+        if valid:
+            dateTimes = get_unix_time(date_example, minutes=10, duration=60) # duration in minutes 
+            req = get_iss_location(dateTimes)
+            display_iss_location(req)
+            sys.exit()
             
-    #     else: 
-    #         print('Invalid datetime, please enter again')
+        else: 
+            print('Invalid datetime, please enter again')
 
-    date_example = "23/07/2021 06:51"
-    dateTimes = get_unix_time(date_example, minutes=10, duration=60) # duration in minutes 
-    req = get_iss_location(dateTimes)
-    display_iss_location(req)
+
     
