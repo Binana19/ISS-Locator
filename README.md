@@ -8,9 +8,9 @@ and after that for an hour.
 •	["Where the ISS at?" REST API Documentation"](https://wheretheiss.at/w/developer)
 
 ## Modules/Libraries Required
-•	Basemap Matplotlib Toolkit\
+•	[Basemap Matplotlib Toolkit](https://matplotlib.org/basemap/users/index.html)\
 •	Datetime module\
-•	Python Itertools\
+•	[Python Itertools](https://docs.python.org/3/library/itertools.html)\
 •	Matplotlib\
 •	NumPy\
 •	Request library
