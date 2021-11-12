@@ -17,5 +17,5 @@ and after that for an hour.
 
 # Usage:
 ```python
-python  ISS_Locator.py 
+python ISS_Locator.py 
 
