@@ -8,7 +8,7 @@ and after that for an hour.
 •	"Where the ISS at?" REST API Documentation
 
 # Modules/Libraries Required
-•	Basemap Matplotlib Toolkit
+•	Basemap Matplotlib Toolkit \n
 •	Datetime module
 •	Python Itertools 
 •	Matplotlib
