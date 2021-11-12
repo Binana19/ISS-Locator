@@ -4,10 +4,10 @@ This is a simple command line application that allows users to enter a past date
 receives the location coordinates the International Space Station (ISS) was over at that moment, as well as its location every ten minutes before
 and after that for an hour.
 
-# APIs
+## APIs
 •	"Where the ISS at?" REST API Documentation
 
-# Modules/Libraries Required
+## Modules/Libraries Required
 •	Basemap Matplotlib Toolkit\
 •	Datetime module\
 •	Python Itertools\
@@ -15,7 +15,7 @@ and after that for an hour.
 •	NumPy\
 •	Request library
 
-# Usage:
+## Usage:
 ```python
 python ISS_Locator.py 
 
