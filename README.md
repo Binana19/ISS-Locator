@@ -7,8 +7,8 @@ and after that for an hour.
 ## Output
 A world map visualizing the location of ISS. Hover mouse cursor over data points to display relevant information. 
 <br><br>
-![](Screenshot (233).png)
-![](Screenshot 2021-11-12 231356.png)
+![alt text](Screenshot (233).png)
+![alt text](Screenshot 2021-11-12 231356.png)
 
 ## APIs
 •	["Where the ISS at?" REST API Documentation"](https://wheretheiss.at/w/developer)
